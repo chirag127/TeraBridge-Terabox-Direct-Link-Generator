@@ -1,0 +1,48 @@
+# Badges Configuration
+# Managed by Apex Technical Authority
+
+# Base URL for all badges
+# IMPORTANT: This URL MUST match the current repository name.
+base_url: "https://github.com/chirag127/TeraBridge-Terabox-Direct-Link-Generator"
+
+# List of badges to be displayed in the README
+badges:
+  - name: "Build Status"
+    description: "GitHub Actions Build Status"
+    image: "https://img.shields.io/github/actions/workflow/status/chirag127/TeraBridge-Terabox-Direct-Link-Generator/ci.yml?branch=main&style=flat-square"
+    url: "${base_url}/actions"
+
+  - name: "Code Coverage"
+    description: "Code Coverage Report (Codecov)"
+    image: "https://img.shields.io/codecov/c/github/chirag127/TeraBridge-Terabox-Direct-Link-Generator?style=flat-square"
+    url: "https://codecov.io/gh/chirag127/TeraBridge-Terabox-Direct-Link-Generator"
+
+  - name: "Tech Stack - JavaScript"
+    description: "Primary language: JavaScript"
+    image: "https://img.shields.io/badge/Language-JavaScript-blue?style=flat-square"
+    url: "${base_url}"
+
+  - name: "Tech Stack - Vite"
+    description: "Build Tool: Vite"
+    image: "https://img.shields.io/badge/Build%20Tool-Vite-E2B036?style=flat-square"
+    url: "https://vitejs.dev/"
+
+  - name: "Tech Stack - React"
+    description: "Frontend Framework: React"
+    image: "https://img.shields.io/badge/Framework-React-61DAFB?style=flat-square"
+    url: "https://reactjs.org/"
+
+  - name: "Tech Stack - Tailwind CSS"
+    description: "Styling: Tailwind CSS"
+    image: "https://img.shields.io/badge/Style-Tailwind%20CSS-38BDF8?style=flat-square"
+    url: "https://tailwindcss.com/"
+
+  - name: "License"
+    description: "License: CC BY-NC 4.0"
+    image: "https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey?style=flat-square"
+    url: "https://creativecommons.org/licenses/by-nc/4.0/"
+
+  - name: "GitHub Stars"
+    description: "Star Count on GitHub"
+    image: "https://img.shields.io/github/stars/chirag127/TeraBridge-Terabox-Direct-Link-Generator?style=flat-square"
+    url: "${base_url}"
