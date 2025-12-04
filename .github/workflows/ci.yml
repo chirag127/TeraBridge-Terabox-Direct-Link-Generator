@@ -1,75 +1,64 @@
 name: CI
 
-# This workflow will run on push and pull request, and deploy the app if it passes.
-# We use a matrix to test on different versions of Node.js.
-
 # Controls when the action will run.
-# For githug repository events, the following are supported:
-# on: [push, pull_request]
-# Allows you to run this workflow manually from the Actions tab
-# on: workflow_dispatch
-
+# For various triggers, see the common "on" clauses: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel.
+# For more information, see: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+
 jobs:
-  # Build job
-  build:
+  # This job builds the code, tests it, and deploys it if necessary.
+  build-and-test:
+    # The type of runner that the job will run on.
+    # For a list of available runners, see: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idruns-on
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [ '20' ] # Assuming Node.js is used for build/frontend
 
     steps:
-    - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm' # Use npm cache for faster dependency installation
-        cache-dependency-path: '**/package-lock.json'
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm' # Cache npm dependencies
 
-    - name: Install Dependencies
-      run: npm ci # Use 'npm ci' for clean, reproducible installs
+      - name: Install Dependencies
+        run: npm ci # Use npm ci for faster, more reliable installs in CI
 
-    - name: Linting with Ruff
-      run: npm run lint # Assuming a lint script exists in package.json
+      - name: Lint with Ruff
+        # Assuming Ruff is configured for frontend linting (e.g., ESLint equivalent)
+        run: npx ruff check .
 
-    - name: Formatting with Ruff
-      run: npm run format # Assuming a format script exists in package.json
+      - name: Format with Ruff
+        # Assuming Ruff is configured for formatting
+        run: npx ruff format .
 
-    - name: Build Project
-      run: npm run build # Assuming a build script exists in package.json
+      - name: Build Frontend (Vite)
+        # This step assumes Vite is used for building the frontend assets
+        run: npm run build
+        env:
+          NODE_ENV: production
 
-    - name: Run Unit Tests with Vitest
-      run: npm test # Assuming a test script runs Vitest
+      # Add E2E testing if applicable (e.g., Playwright)
+      # - name: Setup Playwright
+      #   uses: playwright-github-action/setup-playwright@v1
+      #
+      # - name: Run End-to-End Tests
+      #   run: npm run test:e2e
+      #   env:
+      #     NODE_ENV: test
 
-    # Artifacts can be saved if needed, e.g., build output or test reports
-    # - name: Upload build artifact
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: web-app-build
-    #     path: dist/
-
-  # Deploy job (example, can be expanded)
-  # deploy:
-  #   runs-on: ubuntu-latest
-  #   needs: build # This job will only run if the build job succeeds
-  #   steps:
-  #   - name: Checkout code
-  #     uses: actions/checkout@v4
-  #   - name: Download build artifact
-  #     uses: actions/download-artifact@v4
-  #     with:
-  #       name: web-app-build
-  #       path: dist/
-  #   - name: Deploy to Production
-  #     # Replace with your actual deployment steps (e.g., using SCP, S3, Netlify CLI, Vercel CLI, etc.)
-  #     run: | 
-  #       echo "Deploying to production..."
-  #       # Example: echo "Deploying to server at production-server.com"
+      # Add deployment step here if needed
+      # - name: Deploy to Production
+      #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      #   run: echo "Deploying to production..."
