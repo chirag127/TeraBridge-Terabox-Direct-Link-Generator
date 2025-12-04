@@ -1,121 +1,86 @@
-# Contributing to TeraBridge-Terabox-Direct-Link-Generator
+# Contributing Guidelines for TeraBridge-Terabox-Direct-Link-Generator
 
-Thank you for considering contributing to `TeraBridge-Terabox-Direct-Link-Generator`! We welcome your contributions to help make this project even better. This document outlines the process and guidelines for contributing.
+Thank you for considering contributing to **TeraBridge-Terabox-Direct-Link-Generator**! We welcome your input to make this project even better.
+
+This project adheres to the Apex Technical Authority standards, emphasizing high-velocity, zero-defect, and future-proof development. All contributions are expected to align with these principles.
 
 ## 1. Code of Conduct
 
-This project adheres to the Contributor Covenant Code of Conduct. By participating, you are expected to uphold its values. Please report any unacceptable behavior to [codeofconduct@example.com](mailto:codeofconduct@example.com) or through a GitHub issue.
+This project is governed by the Contributor Covenant, version 2.1. We expect all contributors to uphold this code of conduct. Please report any violations to `chirag.dev@example.com`.
 
-## 2. Getting Started
+## 2. Contribution Workflow
 
-### 2.1 Prerequisites
+We follow a standard GitHub pull request workflow:
 
-Before you begin, ensure you have the following installed:
-
-*   **Git:** For version control.
-*   **Node.js:** Version 18.x or higher recommended.
-*   **npm or Yarn:** Package manager.
-*   **Vite:** For the build process.
-*   **Node.js Ecosystem:** General familiarity with modern JavaScript/TypeScript development.
-
-### 2.2 Setup
-
-Follow these steps to set up your development environment:
-
-1.  **Fork the Repository:** Click the "Fork" button on the repository's GitHub page (`https://github.com/chirag127/TeraBridge-Terabox-Direct-Link-Generator`) to create your own copy.
-2.  **Clone Your Fork:**
+1.  **Fork the Repository:** Create your own fork of the `chirag127/TeraBridge-Terabox-Direct-Link-Generator` repository.
+2.  **Clone Your Fork:** Clone your forked repository to your local machine.
     bash
     git clone https://github.com/chirag127/TeraBridge-Terabox-Direct-Link-Generator.git
     cd TeraBridge-Terabox-Direct-Link-Generator
     
-3.  **Set Upstream Remote:** This helps you keep your fork updated.
+3.  **Set Up Development Environment:**
+    *   Follow the setup instructions in the `README.md` to install dependencies and configure the environment. This project uses **Vite**, **TypeScript**, and **TailwindCSS** for the frontend.
+    *   Ensure you have Node.js and npm/yarn installed.
     bash
-    git remote add upstream https://github.com/chirag127/TeraBridge-Terabox-Direct-Link-Generator.git
-    
-4.  **Install Dependencies:**
-    bash
+    # Example using npm
     npm install
-    # or
-    yarn install
     
-5.  **Run Development Server:** To test your changes locally.
-    bash
-    npm run dev
-    # or
-    yarn dev
-    
-
-## 3. Contribution Workflow
-
-We follow a standard GitHub pull request (PR) workflow:
-
-1.  **Create a Feature Branch:** Always work on a new branch for your feature or bugfix.
+4.  **Create a New Branch:** Create a feature branch for your contribution.
     bash
     git checkout -b feature/your-feature-name
-    # or
-    git checkout -b fix/your-bug-fix
     
-2.  **Make Your Changes:** Implement your changes according to the project's architectural guidelines and coding standards.
-3.  **Test Your Changes:** Ensure your changes are thoroughly tested. Run the provided test suite (`npm test` or `yarn test`). If you are adding new functionality, write new tests.
-4.  **Lint and Format:** Ensure your code adheres to the project's linting and formatting standards.
+5.  **Make Your Changes:** Implement your feature, fix bugs, or improve documentation.
+6.  **Test Your Changes:** Ensure all tests pass. Run linters and formatters.
     bash
-    npm run lint -- --fix
-    # or
-    yarn lint --fix
-    
-    bash
+    # Example commands (refer to README for specifics)
+    npm run lint
+    npm run test
     npm run format
-    # or
-    yarn format
     
-5.  **Commit Your Changes:** Write clear, concise commit messages. Follow conventional commit standards if possible.
+7.  **Commit Your Changes:** Write clear and concise commit messages.
     bash
-    git add .
-    git commit -m "feat: Add new link generation algorithm"
+    git commit -m "feat: Add new direct link generation logic"
     
-6.  **Push to Your Fork:** Push your branch to your fork on GitHub.
+8.  **Push to Your Fork:** Push your branch to your forked repository.
     bash
     git push origin feature/your-feature-name
     
-7.  **Open a Pull Request:** Go to the original repository (`https://github.com/chirag127/TeraBridge-Terabox-Direct-Link-Generator`) and open a new Pull Request from your feature branch.
-    *   **Title:** Provide a clear and descriptive title for your PR.
-    *   **Description:** Explain what your PR does, why it's needed, and any potential impacts. Link to any relevant issues.
+9.  **Open a Pull Request:** Navigate to the original repository (`chirag127/TeraBridge-Terabox-Direct-Link-Generator`) and open a pull request from your feature branch.
+
+## 3. Branching Strategy
+
+*   All development should occur on feature branches branched off the `main` (or `master`) branch.
+*   The `main` branch is considered stable and production-ready.
 
 ## 4. Coding Standards & Best Practices
 
-*   **Language:** Primarily TypeScript. Use strict typing whenever possible.
-*   **Framework:** Vite with React.
-*   **Styling:** Tailwind CSS v4.
-*   **Architecture:** Adhere to modern web development patterns. Aim for modularity, reusability, and separation of concerns.
-*   **Testing:** Write unit and end-to-end tests using Vitest and Playwright.
-*   **Linting/Formatting:** Use Biome for code linting and formatting consistency.
-*   **Commit Messages:** Follow Conventional Commits guidelines.
-*   **Documentation:** Ensure new code is adequately documented, especially public APIs.
+*   **Language:** This project is primarily written in **HTML**, but relies heavily on **TypeScript** and **JavaScript** for dynamic functionality.
+*   **Frameworks:** **React** and **Vite** are used for the frontend.
+*   **Styling:** **TailwindCSS** is used for utility-first styling.
+*   **Linting & Formatting:** Adhere to the linting and formatting rules enforced by **Biome** (or similar configured tools). Ensure your code is clean and well-formatted before committing.
+*   **Code Quality:**
+    *   Follow **SOLID** principles where applicable.
+    *   Ensure code is **DRY** (Don't Repeat Yourself).
+    *   Write clear, readable, and maintainable code.
+    *   Add comments where logic is complex or non-obvious.
+*   **Testing:** All new features and significant bug fixes must be accompanied by unit and/or integration tests. Refer to the testing section in `README.md` for details.
 
-## 5. Reporting Issues
+## 5. Submitting Patches
 
-If you encounter a bug or have a feature request, please:
+When submitting a bug fix, please:
 
-1.  **Check Existing Issues:** Search the GitHub Issues page to see if your issue has already been reported.
-2.  **Create a New Issue:** If it's a new issue, open a new one using the provided templates. Provide as much detail as possible, including:
-    *   A clear, descriptive title.
-    *   Steps to reproduce the bug.
-    *   Expected vs. Actual behavior.
-    *   Environment details (browser, OS, etc.).
-    *   Screenshots or error logs if applicable.
+1.  Verify the bug in the `main` branch.
+2.  Write a test that describes and reveals the bug.
+3.  Fix the bug and ensure the test passes.
 
-## 6. Updating Your Fork
+## 6. Project Structure
 
-To keep your fork up-to-date with the main repository:
+Familiarize yourself with the project's structure as defined in the `README.md` or an architectural diagram (if provided).
 
-bash
-git checkout main # Or the branch you are working on
-git fetch upstream
-git merge upstream/main
+## 7. Licensing
 
+This project is licensed under the **CC BY-NC 4.0** license. By contributing, you agree that your contributions will be licensed under this same license.
 
-Then, resolve any merge conflicts and push the changes to your fork.
+## 8. Questions?
 
-## Thank You!
-
-We appreciate your effort in contributing to `TeraBridge-Terabox-Direct-Link-Generator`. Your contributions are invaluable!
+If you have any questions about the contribution process or the project itself, please open an issue or contact the maintainer.
